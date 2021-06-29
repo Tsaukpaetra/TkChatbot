@@ -1,0 +1,30 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="Bot_Name" Provider="Tk_TwitchChatBot.PortableSettingsProvider" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Bot_OAuth" Provider="Tk_TwitchChatBot.PortableSettingsProvider" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Bot_Channel" Provider="Tk_TwitchChatBot.PortableSettingsProvider" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Bot_Server" Provider="Tk_TwitchChatBot.PortableSettingsProvider" Type="System.String" Scope="User">
+      <Value Profile="(Default)">irc.twitch.tv:6667</Value>
+    </Setting>
+    <Setting Name="chat_SendDelay" Provider="Tk_TwitchChatBot.PortableSettingsProvider" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">2000</Value>
+    </Setting>
+    <Setting Name="chatMaxLines" Provider="Tk_TwitchChatBot.PortableSettingsProvider" Type="System.Decimal" Scope="User">
+      <Value Profile="(Default)">500</Value>
+    </Setting>
+    <Setting Name="startupExpressions" Provider="Tk_TwitchChatBot.PortableSettingsProvider" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Bot_sslEnabled" Provider="Tk_TwitchChatBot.PortableSettingsProvider" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=&quot;C:\Users\Anthony\Google Drive\Personal Projects\Tk-TwitchChatBot\Tk-TwitchChatBot\Database.sqlite.db&quot;;Foreign Keys=True" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Commands">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="integer" Nullable="false" />
+          <Property Name="Keyword" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+          <Property Name="GlobalCD" Type="integer" Nullable="false" />
+          <Property Name="UserCD" Type="integer" Nullable="false" />
+          <Property Name="MinPermissionLevel" Type="integer" Nullable="false" />
+          <Property Name="ExtraPrecondition" Type="nvarchar" MaxLength="500" />
+          <Property Name="CoolDownMessage" Type="nvarchar" MaxLength="500" />
+          <Property Name="Actions" Type="nvarchar" MaxLength="4000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cooldowns">
+          <Key>
+            <PropertyRef Name="CommandId" />
+            <PropertyRef Name="User" />
+          </Key>
+          <Property Name="CommandId" Type="integer" Nullable="false" />
+          <Property Name="User" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Expiration" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Timers">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+          <Property Name="Repeat" Type="integer" Nullable="false" />
+          <Property Name="RepeatSeconds" Type="integer" Nullable="false" />
+          <Property Name="NextTrigger" Type="datetime" Nullable="false" />
+          <Property Name="Action" Type="nvarchar" MaxLength="4000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserAttributes">
+          <Key>
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="Key" />
+          </Key>
+          <Property Name="UserName" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="Key" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="4000" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="FirstSeen" Type="datetime" Nullable="false" />
+          <Property Name="FirstSeenThisSession" Type="datetime" Nullable="false" />
+          <Property Name="LastSeen" Type="datetime" Nullable="false" />
+          <Property Name="PermissionLevel" Type="integer" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="dbModelStoreContainer">
+          <EntitySet Name="Commands" EntityType="Self.Commands" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Cooldowns" EntityType="Self.Cooldowns" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Timers" EntityType="Self.Timers" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="UserAttributes" EntityType="Self.UserAttributes" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Users" EntityType="Self.Users" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+          <EntitySet Name="Commands" EntityType="dbModel.Command" />
+          <EntitySet Name="Cooldowns" EntityType="dbModel.Cooldown" />
+          <EntitySet Name="Timers" EntityType="dbModel.Timer" />
+          <EntitySet Name="UserAttributes" EntityType="dbModel.UserAttribute" />
+          <EntitySet Name="Users" EntityType="dbModel.User" />
+        </EntityContainer>
+        <EntityType Name="Command">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="Keyword" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+          <Property Name="GlobalCD" Type="Int64" Nullable="false" />
+          <Property Name="UserCD" Type="Int64" Nullable="false" />
+          <Property Name="MinPermissionLevel" Type="Int64" Nullable="false" />
+          <Property Name="ExtraPrecondition" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CoolDownMessage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Actions" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Cooldown">
+          <Key>
+            <PropertyRef Name="CommandId" />
+            <PropertyRef Name="User" />
+          </Key>
+          <Property Name="CommandId" Type="Int64" Nullable="false" />
+          <Property Name="User" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Expiration" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Timer">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+          <Property Name="Repeat" Type="Int64" Nullable="false" />
+          <Property Name="RepeatSeconds" Type="Int64" Nullable="false" />
+          <Property Name="NextTrigger" Type="DateTime" Nullable="false" />
+          <Property Name="Action" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserAttribute">
+          <Key>
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="Key" />
+          </Key>
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Key" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="FirstSeen" Type="DateTime" Nullable="false" />
+          <Property Name="FirstSeenThisSession" Type="DateTime" Nullable="false" />
+          <Property Name="LastSeen" Type="DateTime" Nullable="false" />
+          <Property Name="PermissionLevel" Type="Int64" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbModelStoreContainer" CdmEntityContainer="DatabaseEntities">
+          <EntitySetMapping Name="Commands">
+            <EntityTypeMapping TypeName="dbModel.Command">
+              <MappingFragment StoreEntitySet="Commands">
+                <ScalarProperty Name="Actions" ColumnName="Actions" />
+                <ScalarProperty Name="CoolDownMessage" ColumnName="CoolDownMessage" />
+                <ScalarProperty Name="ExtraPrecondition" ColumnName="ExtraPrecondition" />
+                <ScalarProperty Name="MinPermissionLevel" ColumnName="MinPermissionLevel" />
+                <ScalarProperty Name="UserCD" ColumnName="UserCD" />
+                <ScalarProperty Name="GlobalCD" ColumnName="GlobalCD" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cooldowns">
+            <EntityTypeMapping TypeName="dbModel.Cooldown">
+              <MappingFragment StoreEntitySet="Cooldowns">
+                <ScalarProperty Name="Expiration" ColumnName="Expiration" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="CommandId" ColumnName="CommandId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Timers">
+            <EntityTypeMapping TypeName="dbModel.Timer">
+              <MappingFragment StoreEntitySet="Timers">
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="NextTrigger" ColumnName="NextTrigger" />
+                <ScalarProperty Name="RepeatSeconds" ColumnName="RepeatSeconds" />
+                <ScalarProperty Name="Repeat" ColumnName="Repeat" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAttributes">
+            <EntityTypeMapping TypeName="dbModel.UserAttribute">
+              <MappingFragment StoreEntitySet="UserAttributes">
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="dbModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="PermissionLevel" ColumnName="PermissionLevel" />
+                <ScalarProperty Name="LastSeen" ColumnName="LastSeen" />
+                <ScalarProperty Name="FirstSeenThisSession" ColumnName="FirstSeenThisSession" />
+                <ScalarProperty Name="FirstSeen" ColumnName="FirstSeen" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer>
+    <edmx:Connection>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <edmx:DesignerProperty Name="EnablePluralization" Value="true" />
+        <edmx:DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <edmx:DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <edmx:DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams />
+  </edmx:Designer>
+</edmx:Edmx>

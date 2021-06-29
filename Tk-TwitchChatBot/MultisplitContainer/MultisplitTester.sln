@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MultisplitTester", "MultisplitTester\MultisplitTester.vbproj", "{BAD22D09-3558-4303-B207-4C12654E8529}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MultisplitDll", "MultisplitDll\MultisplitDll.vbproj", "{4326361F-9C51-42A0-A81D-96390886E1FB}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Helpers", "Helpers\Helpers.vbproj", "{140A1A7C-A525-4FCA-A14F-D02D66ECC005}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BAD22D09-3558-4303-B207-4C12654E8529}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAD22D09-3558-4303-B207-4C12654E8529}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAD22D09-3558-4303-B207-4C12654E8529}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAD22D09-3558-4303-B207-4C12654E8529}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4326361F-9C51-42A0-A81D-96390886E1FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4326361F-9C51-42A0-A81D-96390886E1FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4326361F-9C51-42A0-A81D-96390886E1FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4326361F-9C51-42A0-A81D-96390886E1FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{140A1A7C-A525-4FCA-A14F-D02D66ECC005}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{140A1A7C-A525-4FCA-A14F-D02D66ECC005}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{140A1A7C-A525-4FCA-A14F-D02D66ECC005}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{140A1A7C-A525-4FCA-A14F-D02D66ECC005}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

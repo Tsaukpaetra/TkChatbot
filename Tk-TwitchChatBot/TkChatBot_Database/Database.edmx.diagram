@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="32e5e8da42ed4a3b8edeeff2a5b5df68" Name="Diagram1">
+        <EntityTypeShape EntityType="dbModel.Command" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="dbModel.Cooldown" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="dbModel.Timer" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="dbModel.UserAttribute" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="dbModel.User" Width="1.5" PointX="4.75" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

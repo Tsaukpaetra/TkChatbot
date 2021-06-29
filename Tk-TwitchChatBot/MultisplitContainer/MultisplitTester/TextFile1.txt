@@ -1,0 +1,49 @@
+MultisplitContainer
+provide sizeability for controls on FlowlayoutPanel.
+
+Sometimes, more or less often, you need to display many Controls, eg. to edit DataRecords with many fields. And you want to give the user the opportunity to resize those editing-controls, depending wether there is much content to display or little.
+You can use SplitContainer to implement that, but SplitContainer only makes two controls sizeable. To get many editing-controls sizeable you may use many SplitContainers, and nest them into each other. But that leads to a complex structure of controls, and especially changes in Gui-Design can become difficult.
+
+Or you may use this MultiSplitContainer ;).
+You can put all editing-controls into, and each will be sizeable. Of course you can disable sizeability for some controls, eg labels, DateTimePickers and stuff.
+In SingleColumnOrRow-Mode Multisplitter layouts all editing-controls with Dockstyle.Top, except (optional) one control with Dockstyle.Fill.
+
+Another Mode
+When SingleColumnOrRow-Mode is off Multisplitter behaves as a FlowLayoutPanel with sizeable editing-controls.
+Multisplitter only supports FlowDirection TopDown or LeftToRight (no BottomUp/RightToLeft).
+In TopDown-mode you additionally can resize the "Expansion", that means: the width of all editing-controls. This comes up as a kind of column-width for the vertical arranged controls. 
+(Hmm. Not easy to explain, but in action its easy to use, please try out.)
+
+Points of Interest
+
+Splitbars 
+There is none. The Layout respects the Margin-Property of the editing-controls, and in the space between two controls the MouseMove-Event reaches the MulitSplitContainer. At that point it detects the nearby editing-controls, and sets its cursor to HSplit (vertical sizement) or VSplit (horizontal sizement).
+
+overridden OnLayout-Method
+MultisplitContainer inherits from FlowlayoutPanel. In SingleColumnOrRow-Mode it uses an overridden OnLayout-Method, otherwise Layout is done by the base-class.
+
+IExtenderProvider-Property "IsFilling"
+FlowlayoutPanel already implements the IExtenderProvider-Interface, which gives the power to add virtual "Properties" to its contained editing-controls. Those Properties become displayed in the Designers Property-Window as well as any other Properties.
+I hided the overcome "FlowBreak"-extended Property and added an "IsFilling"-Property, so the user can set one of the editing-controls as Filling-Control. Now, when the user sizes up a control, the Filling-Control shrinks and vice-versa. (like SplitContainer-Behaviour: left panel grows - right panel shrinks).
+
+Ownerdrawing
+Thus always two Panels are changing. In SplitContainer there is no question which, but in Multisplitcontainer the user cannot see directly, which is the second Control, which will resize. So I implemented a little Ownerdrawing to markup the two controls, which will be resized.
+
+IExtenderProvider-Property "SizeDynamic"
+Disabling sizeability is simply done by setting the controls Minimum/Maximum-Size. Since thats not very comfortable to input in Designer, i added the ExtenderProvider-Property "SizeDynamic" to the controls, which sets those Values.
+
+No Docking
+since the editing-controls are not really docked, you can drag them easily to other panels and vice versa. (In a real docking-szenario you must undock them before you can do so.)
+
+Using the code
+compile project and drag a MultisplitContainer on Form (set Dock.Fill). Drag some editing-controls on it, Textboxes (MultiLine on or off), Comboboxes, Labels (Autosize on or off).
+
+play around with editing-control-Properties: Margin, IsFilling, SizeDynamic
+play with MultisplitContainer-Properties: TopDown, Expansion, SingleColumnOrRow, AutoScroll, AutoSize
+
+run project and test the resizing-behaviour
+
+still something to do
+The control is not programmed out perfectly. There may remain malfunctions (eg. when Margins greater than 15pix set) and uncomfortably behaviour (locking sizeability in both directions only can be done by setting MaximumSize by Hand). But i hope, it gives you some ideas to implement dynamic layout, and it shows some techniques (as IExtenderProvider-Properties, userdefined Layout, Ownerdrawing) to make it better or to create your own MultisplitContainer.
+As you see, nearly every editing-control needs a Caption-Label to make sense. In the Sample-App i helped myself by placing Caption-Label and editing-control together on a little panel, the label docked left, the editing-control docked fill. That still is circumstancily to figure out. One should create a "CaptionPanel", which would provide a caption, and would layout the editing-control automatically centered in the remaining space.
+But that may be stuff for another article.
